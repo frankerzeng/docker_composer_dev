@@ -1,4 +1,4 @@
-# docker_composer_dev，利用docker搭建的开发环境
+# 利用docker搭建的开发环境
 docker开发环境，包括php/mysql/reids/nginx/zookeeper/RabbitMQ
 
 php包括拓展：math，memcache，xhprof性能分析
