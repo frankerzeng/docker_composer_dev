@@ -33,17 +33,14 @@ services:
     volumes:
       - /mnt/share/workspace/:/var/www/html/
       - /mnt/share/docker/:/home/
-      - ./php/conf/zengfanlong1.ini:/usr/local/etc/php/conf.d/zengfanlong1.ini:ro #配置文件
+      - ./php/conf/private_dev.ini:/usr/local/etc/php/conf.d/private_dev.ini:ro #配置文件
     environment:
          - ENV=dev
     links:
       - "mysql"
     extra_hosts:
-      - "admin.dev-chinabrands.cn: 172.0.0.10"
-      - "api.dev-chinabrands.cn: 172.0.0.10"
-      - "admin.dev-chinabrands.com: 172.0.0.10"
-      - "api.dev-chinabrands.com: 172.0.0.10"
-      - "www.dev-chinabrands.com: 172.0.0.10"
+      #php容器内访问nginx
+      - "admin.xxx.cn: 172.0.0.10"
     networks:
       default:
         ipv4_address:  172.0.0.20
