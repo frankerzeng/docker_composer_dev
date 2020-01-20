@@ -1,12 +1,12 @@
 # 利用docker搭建的开发环境
 docker开发环境，包括
-. PHP
-. MySQL
-. Reids
-. Nginx
-. ZooKeeper
-. Elasticsearch
-. RabbitMQ
+- PHP
+- MySQL
+- Reids
+- Nginx
+- ZooKeeper
+- Elasticsearch
+- RabbitMQ
 
 php包括拓展：math，memcache，xhprof性能分析
 
