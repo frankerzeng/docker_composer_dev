@@ -1,6 +1,7 @@
 version: "2.0"
 services:
   nginx:
+    container_name: nginx
     build: ./nginx
     ports:
       - "80:80"
@@ -16,6 +17,7 @@ services:
           ipv4_address:  172.0.0.10
 
   # apache2:
+  #   container_name: apache
   #   image: webdevops/apache:latest
   #   environment:
   #       - PHP_SOCKET=php:9000
@@ -27,6 +29,7 @@ services:
   #   links:
   #       - php  
   php:
+    container_name: php5
     build: ./php
     ports:
       - "9000:9000"
@@ -46,6 +49,7 @@ services:
         ipv4_address:  172.0.0.20
       
   mysql:
+    container_name: mysql
     build: ./mysql
     #restart: always
     #command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --init-connect='SET NAMES utf8mb4;' --innodb-flush-log-at-trx-commit=0 --innodb_flush_method=normal
@@ -58,7 +62,22 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD : 111111
 
+  mongo:
+    container_name: mongo
+    image: mongo
+    #volumes:
+      #- "./mongodb/db:/data/db"
+    ports:
+      - "27017:27017"
+    #environment:
+      #MONGO_INITDB_ROOT_USERNAME: root
+      #MONGO_INITDB_ROOT_PASSWORD: 123456
+    networks:
+      default:
+        ipv4_address:  172.0.0.21
+  
   redis:
+    container_name: redis
     image: redis:4
     ports:
       # 端口映射
@@ -72,9 +91,9 @@ services:
       redis-server
 
   zoo1:
+    container_name: zoo1
     image: zookeeper
     restart: always
-    container_name: zoo1
     #绑定容器接口
     ports:
         - "2181:2181"
@@ -85,9 +104,9 @@ services:
       default:
         ipv4_address:  172.0.0.19
   zoo2:
+    container_name: zoo2
     image: zookeeper
     restart: always
-    container_name: zoo2
     ports:
         - "2182:2181"
     environment:
@@ -97,9 +116,9 @@ services:
       default:
         ipv4_address:  172.0.0.18
   zoo3:
+    container_name: zoo3
     image: zookeeper
     restart: always
-    container_name: zoo3
     ports:
         - "2183:2181"
     environment:
@@ -110,8 +129,8 @@ services:
         ipv4_address:  172.0.0.17
         
   es1:
-    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
     container_name: es1
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
@@ -133,8 +152,8 @@ services:
       default:
         ipv4_address:  172.0.0.16
   es2:
-    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
     container_name: es2
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
     environment:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"

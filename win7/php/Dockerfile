@@ -16,6 +16,7 @@ RUN docker-php-ext-install mcrypt
 RUN docker-php-ext-install shmop
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 RUN pecl install memcache && docker-php-ext-enable memcache
+RUN pecl install mongodb && docker-php-ext-enable mongodb
 
 #Install the xhprof extension 
 ADD ./extend/xhprof-0.9.4 /tmp/xhprof 
