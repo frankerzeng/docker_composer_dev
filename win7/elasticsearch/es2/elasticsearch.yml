@@ -1,4 +1,4 @@
-cluster.name: meitu
+cluster.name: es-cluster-name
 node.name: node-data-1
 node.master: false
 node.data: true
